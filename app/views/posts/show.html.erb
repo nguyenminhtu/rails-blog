@@ -25,7 +25,8 @@
 			<% end %>
 
 			<br>
-			<p><strong>Description: </strong><%= @post.description %>.</p>
+			<p><strong>Description: </strong></p>
+			<p><%= simple_format(@post.description) %>.</p>
 			<br>
 			<%= link_to "Back", :back, class: 'btn btn-primary', style: "color: #fff" %>
 		</div>		
