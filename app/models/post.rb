@@ -4,7 +4,7 @@ class Post < ActiveRecord::Base
 	has_many :categories, through: :post_categories
 
 	validates :title, length: { in: 4..100 }, presence: true, uniqueness: { case_sensitive: false }
-	validates :description, minimum: 50, presence: true
+	validates :description, length: { minimum: 50 }, presence: true
 	#validates :user_id, presence: true
 
 end
