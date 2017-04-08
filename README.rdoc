@@ -1,5 +1,5 @@
-# Very Simple Blog with Rails 4
+= Very Simple Blog with Rails 4
 
-### Some features
+=== Some features
 - Admin Panel
-- Pure Authentication
+- Authentication with no gem
