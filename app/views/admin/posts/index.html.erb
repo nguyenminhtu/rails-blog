@@ -24,7 +24,7 @@
 						<tr>
 							<td><%= post.id %></td>
 							<td><%= link_to post.title, admin_post_path(post) %></td>
-							<td><%= simple_format(post.description) %></td>
+							<td><%= truncate(post.description, length: 100) %></td>
 							<td><%= post.user.username %></td>
 							<td><%= time_ago_in_words(post.created_at) %> ago</td>
 							<td><%= time_ago_in_words(post.updated_at) %> ago</td>
