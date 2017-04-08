@@ -1,0 +1,45 @@
+<%= render "layouts/navigation_admin" %>
+
+<div class="container">
+	<div class="row">
+		<%= render "layouts/sidebar_admin" %>
+
+		<div class="col-md-10">
+			<h1 class="text-center">Listing users</h1>
+			<hr>
+			<table class="table table-hover teble-bordered text-center">
+				<thead>
+					<tr>
+						<th class="text-center">ID</th>
+						<th class="text-center">Username</th>
+						<th class="text-center">Email</th>
+						<th class="text-center">Role</th>
+						<th class="text-center">Created at</th>
+						<th class="text-center">Updated at</th>
+						<th class="text-center" colspan="2">Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |user| %>
+						<tr>
+							<td><%= user.id %></td>
+							<td><%= link_to user.username, admin_user_path(user) %></td>
+							<td><%= user.email %></td>
+							<td><%= user.admin? ? "Admin" : "User" %></td>
+							<td><%= time_ago_in_words(user.created_at) %> ago</td>
+							<td><%= time_ago_in_words(user.updated_at) %> ago</td>
+							<td><%= link_to "Edit", edit_admin_user_path(user), class: 'btn btn-warning' %></td>
+							<td><%= link_to "Delete", admin_user_path(user), method: :delete, data: { confirm: "Are u sure want to delete this user?" }, class: 'btn btn-danger' %></td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+
+			<div class="text-center">
+				<%= will_paginate %>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render 'layouts/footer' %>

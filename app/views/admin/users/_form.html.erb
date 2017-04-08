@@ -1,0 +1,26 @@
+<%= render 'shared/errors', obj: @user %>
+
+<%= form_for [:admin, @user] do |f| %>
+
+	<div class="form-group">
+		<%= f.label :username %>
+		<%= f.text_field :username, class: 'form-control', disabled: true %>
+	</div>
+
+	<div class="form-group">
+		<%= f.label :email %>
+		<%= f.text_field :email, class: 'form-control', disabled: true %>
+	</div>
+
+	<div class="form-group">
+		<select name="user[admin]" id="" class="form-control">
+			<option value="true" <%= "selected=''" if @user.admin == true %>>Admin</option>
+			<option value="false" <%= "selected=''" if @user.admin == false %>>User</option>
+		</select>
+	</div>
+
+	<div class="form-group">
+		<%= f.submit class: 'btn btn-primary' %>
+	</div>
+
+<% end %>

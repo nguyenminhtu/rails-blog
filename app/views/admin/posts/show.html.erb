@@ -1,0 +1,37 @@
+<%= render "layouts/navigation_admin" %>
+
+<div class="container">
+	<div class="row">
+		<%= render "layouts/sidebar_admin" %>
+
+		<div class="col-md-10">
+			<h1 class="text-center">View post <small><%= @post.title %></small></h1>
+			<hr>
+			<div class="row">
+				<div class="col-md-6 col-md-offset-3">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h4><%= @post.title %></h4>
+						</div>
+
+						<div class="panel-body">
+							<strong>Description: </strong>
+							<%= simple_format(@post.description) %>
+							
+							<% if @post.categories.any? %>
+								<p>Tags: <%= render @post.categories %></p>
+							<% end %>
+
+							<hr>
+							<span><%= link_to "Edit", edit_admin_post_path(@post), class: 'btn btn-xs btn-success' %></span>
+							<span><%= link_to "Delete", admin_post_path(@post), method: :delete, data: { confirm: "Are u sure want to delete this post ?" }, class: 'btn btn-xs btn-danger' %></span>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<%= render 'layouts/footer' %>

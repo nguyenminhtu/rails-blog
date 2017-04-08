@@ -1,0 +1,35 @@
+<%= render 'layouts/navigation' %>
+<%= render 'layouts/banner' %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<div class="well well-sm">
+				<span class="glyphicon glyphicon-bookmark"></span><span class="lead">&nbsp;Featured Post</span>
+			</div>
+
+			<% @posts.each do |post| %>
+				<div class="panel panel-default">
+					<div class="panel-heading">
+						<%= link_to post.title, post_path(post) %>
+					</div>
+
+					<div class="panel-body">
+						<p><strong>Description: </strong><%= truncate(post.description, length: 50) %></p>
+						<p><span class="pull-right">Posted at: <%= time_ago_in_words(post.created_at) %> ago</span></p>
+					</div>
+				</div>
+			<% end %>
+
+			<div class="row text-center">
+				<%= will_paginate @posts %>
+			</div>
+		</div>
+
+		<%= render "layouts/sidebar" %>
+	</div>
+</div>
+
+
+<%= render 'layouts/footer' %>

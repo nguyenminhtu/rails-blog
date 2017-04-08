@@ -1,0 +1,42 @@
+<%= render 'layouts/navigation' %>
+<%= render 'layouts/banner' %>
+
+<div class="container">
+	<div class="row">
+		<h1 class="text-center">Edit your profile</h1>
+		<hr>
+		<div class="col-md-6 col-md-offset-3">
+			<%= render "shared/errors", obj: @user %>
+
+			<%= form_for @user do |f| %>
+				<div class="form-group">
+					<%= f.label :username %>
+					<%= f.text_field :username, class: 'form-control', autofocus: true, placeholder: 'Username...', required: true %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :email %>
+					<%= f.email_field :email, class: 'form-control', placeholder: 'Email...', required: true %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :password %>
+					<%= f.password_field :password, class: 'form-control', placeholder: 'Password...', required: true %>
+				</div>
+
+				<div class="form-group">
+					<%= f.label :password_confirmation %>
+					<%= f.password_field :password_confirmation, class: 'form-control', placeholder: 'Confirm password...', required: true %>
+				</div>
+
+				<div class="form-group">
+					<%= f.submit "Update", class: 'btn btn-primary' %>
+				</div>
+			<% end %>
+		</div>		
+
+	</div>
+</div>
+
+
+<%= render 'layouts/footer' %>

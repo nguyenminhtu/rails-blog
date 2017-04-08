@@ -1,0 +1,13 @@
+<div class="col-md-3">
+	<div class="panel panel-default">
+		<div class="panel-heading">
+			<span class="glyphicon glyphicon-bookmark"></span><span class="lead">&nbsp;Categories</span>
+		</div>
+
+		<div class="panel-body">
+			<% @categories.each do |cate| %>
+				<p><%= link_to cate.name, category_path(cate) %></p>
+			<% end %>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,20 @@
+<%= render 'layouts/navigation' %>
+<%= render 'layouts/banner' %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<h4><strong>Username: </strong><%= @user.username %></h4>
+			<h4><strong>Email: </strong><%= @user.email %></h4>
+			<h4><strong>Role: </strong><%= (@user.admin == true) ? "Admin" : "User" %></h4>
+			<br>
+			<%= link_to "Edit profile", edit_user_path(@user), class: 'btn btn-primary' %>
+		</div>		
+
+		<%= render "layouts/sidebar" %>
+	</div>
+</div>
+
+
+<%= render 'layouts/footer' %>

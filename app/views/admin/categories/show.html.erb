@@ -1,0 +1,59 @@
+<%= render "layouts/navigation_admin" %>
+
+<div class="container">
+	<div class="row">
+		<%= render "layouts/sidebar_admin" %>
+
+		<div class="col-md-10">
+			<h1 class="text-center">View category</h1>
+			<hr>
+			<div class="row text-center">
+				<div class="col-md-12">
+					<h4 class="text-center">Name: <%= @category.name %></h4>
+					<hr>
+					<span><%= link_to "Edit", edit_admin_category_path(@category), class: 'btn btn-xs btn-success' %></span>
+					<span><%= link_to "Delete", admin_category_path(@category), method: :delete, data: { confirm: "Are u sure want to delete this category ?" }, class: 'btn btn-xs btn-danger' %></span>
+
+					<% if @category.posts.any? %>
+						<hr>
+						<div class="row">
+							<div class="text-center">
+								<%= will_paginate @category_posts %>
+							</div>
+						</div>
+						<% @category.posts.each do |post| %>
+
+							<div class="row text-center">
+								<div class="col-md-8 col-md-offset-2">
+									<div class="panel panel-default">
+										<div class="panel-heading">
+											<%= link_to post.title, admin_post_path(post) %>
+										</div>
+
+										<div class="panel-body">
+											<div><%= truncate(post.description, length: 100) %></div>
+
+											<% if post.categories.any? %>
+												<hr>
+												<p>Tags: <%= render post.categories %></p>
+											<% end %>
+
+											<hr>
+											<span><%= link_to "Edit", edit_admin_post_path(post), class: 'btn btn-xs btn-success' %></span>
+											<span><%= link_to "Delete", admin_post_path(post), method: :delete, data: { confirm: "Are u sure want to delete this category ?" }, class: 'btn btn-xs btn-danger' %></span>
+										</div>
+									</div>
+								</div>
+							</div>
+
+						<% end %>
+					<% end %>
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<%= render 'layouts/footer' %>

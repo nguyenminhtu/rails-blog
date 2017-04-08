@@ -1,0 +1,11 @@
+<% if obj.errors.any? %>
+	
+	<div class="alert alert-danger alert-dismissable">
+		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+		<h3><%= pluralize(obj.errors.count, "error") %> prohibited this content from being saved.</h3>
+		<% obj.errors.full_messages.each do |err| %>
+			<p><%= err %></p>
+		<% end %>
+	</div>
+
+<% end %>

@@ -1,0 +1,48 @@
+<%= render 'layouts/navigation' %>
+<%= render 'layouts/banner' %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<ol class="breadcrumb">
+				<li>
+					<%= link_to "Home", root_path %>
+				</li>
+				<li>
+					<%= @category.name %>
+				</li>
+			</ol>
+
+			<h3 class="text-center">Category: <span class="text-danger"><%= @category.name %></span></h3>
+			<hr>
+			
+			<% if @category.posts.any? %>
+				<% @category_posts.each do |post| %>
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<%= link_to post.title, post_path(post) %>
+						</div>
+
+						<div class="panel-body">
+							<p><strong>Description: </strong><%= truncate(post.description, length: 50) %></p>
+							<p><span class="pull-right">Posted at: <%= time_ago_in_words(post.created_at) %> ago</span></p>
+						</div>
+					</div>
+				<% end %>
+
+				<div class="row text-center">
+					<%= will_paginate @category_posts %>
+				</div>
+			<% end %>
+
+			<br>
+			<%= link_to "Back", :back, class: 'btn btn-primary', style: "color: #fff" %>
+		</div>		
+
+		<%= render "layouts/sidebar" %>
+	</div>
+</div>
+
+
+<%= render 'layouts/footer' %>

@@ -1,0 +1,38 @@
+<%= render 'layouts/navigation' %>
+<%= render 'layouts/banner' %>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-md-9">
+			<ol class="breadcrumb">
+				<li>
+					<%= link_to "Home", root_path %>
+				</li>
+				<li>
+					<%= link_to @post.categories.first.name, category_path(@post.categories.first) if @post.categories.any? %>
+				</li>
+				<li>
+					<%= @post.title %>
+				</li>
+			</ol>
+
+			<h3><%= @post.title %></h3>
+
+			<% if @post.categories.any? %>
+				<br>
+				<p>Categories: <%= render @post.categories %></p>
+			<% end %>
+
+			<br>
+			<p><strong>Description: </strong><%= @post.description %>.</p>
+			<br>
+			<%= link_to "Back", :back, class: 'btn btn-primary', style: "color: #fff" %>
+		</div>		
+
+		<%= render "layouts/sidebar" %>
+	</div>
+</div>
+
+
+<%= render 'layouts/footer' %>
