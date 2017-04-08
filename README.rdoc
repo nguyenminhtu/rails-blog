@@ -3,3 +3,6 @@
 === Some features
 - Admin Panel
 - Authentication with no gem
+
+=== Demo
+[Rails Blog](https://rails-first-project.herokuapp.com)
